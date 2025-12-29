@@ -23,17 +23,18 @@ main {
   margin-right: 0.5%;
   transition: 0.5s ease;
   transform-style: preserve-3d;
+  border-radius: 10px;
 }
 .flipped {
   transform: rotateY(180deg);
 }
 .card50 {
-  border: 2px solid rgb(243, 0, 0);
   width: 8.5%;
   height: 18%;
   margin-left: 0.5%;
   margin-right: 0.5%;
   transition: 0.5s ease;
+  border-radius: 10px;
 }
 /* menu */
 #mainMenu {
@@ -70,7 +71,6 @@ main {
   width: 40%;
 }
 .style {
-  background-color: rgb(227, 162, 82);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -98,9 +98,14 @@ main {
 .pink {
   background-color: pink;
 }
-.white {
+.redCard {
   background-image: url("./img/retro carta rossa.webp");
-  background-size: 140% 125%;
+  background-size: 140% 120%;
+  background-position: center;
+}
+.blueCard {
+  background-image: url("./img/retro carta blu.webp");
+  background-size: 120% 120%;
   background-position: center;
 }
 .hide {
