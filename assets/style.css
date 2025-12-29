@@ -3,11 +3,17 @@ body {
   margin: 0;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-image: url("./img/bcg menu.webp");
   font-family: "Cinzel", serif;
   background-size: 100% 100%;
+}
+#controls {
+  color: white;
+  gap: 60%;
+  font-size: 150%;
 }
 main {
   display: flex;
@@ -167,7 +173,7 @@ section {
   opacity: 0;
 }
 .rightSet {
-  transform: scale(1.1);
+  transform: rotate(30deg) scale(0.5);
 }
 .borderSelected {
   border: 3px solid rgb(241, 190, 80);
@@ -178,4 +184,5 @@ section {
 .victoryScreen {
   color: rgb(241, 190, 80);
   font-size: 300%;
+  margin-top: 20%;
 }

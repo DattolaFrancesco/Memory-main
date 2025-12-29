@@ -6,11 +6,14 @@ const colorCards = document.getElementById("styleCards");
 const colorCardsSelection = document.querySelectorAll(".style");
 const numCardsSelection = document.querySelectorAll(".number");
 const startBtn = document.getElementById("startBtn");
+const controls = document.getElementById("controls");
+const moves = document.getElementById("moves");
 const color = ["blue", "red", "orange", "green", "purple", "pink"];
 const colorArray = [];
 const cardsPicked = [];
 const divArray = [];
 let click = 0;
+let counterMoves = 0;
 
 //------------------------------------------------------
 const shuffleColor = (n) => {
@@ -59,6 +62,8 @@ const createCards = (n, c) => {
       e.target.classList.add("eventNone");
       cardsPicked.push(e.target);
       click++;
+      counterMoves++;
+      moves.innerText = `moves: ${counterMoves}`;
       check(c);
     });
   }
@@ -80,7 +85,7 @@ const check = (c) => {
         }
         divArray.forEach((e) => e.classList.remove("eventNone"));
         cardsPicked.splice(0, 2);
-      }, 500);
+      }, 1000);
     } else {
       setTimeout(() => {
         cardsPicked[0].classList.add("rightSet");
@@ -89,7 +94,7 @@ const check = (c) => {
         cardsPicked[1].classList.add("opacity");
         cardsPicked.splice(0, 2);
         victoryCheck(c);
-      }, 500);
+      }, 1000);
     }
   }
 };
@@ -108,6 +113,7 @@ colorCards.addEventListener("click", (e) => {
 });
 
 startBtn.addEventListener("click", () => {
+  controls.classList.remove("hide");
   body.classList.add("bodyBcgInGame");
   const numberSelected = [];
   numCardsSelection.forEach((e) => {
@@ -130,8 +136,9 @@ const victoryCheck = (c) => {
         divArray.forEach((e) => e.classList.add("hide"));
       }, 500);
       setTimeout(() => {
+        controls.classList.add("hide");
         const h1 = document.createElement("h1");
-        h1.innerText = "HAI VINTO";
+        h1.innerText = `HAI VINTO IN ${counterMoves} MOSSE E CON UN TEMPO DI `;
         h1.classList.add("victoryScreen");
         main.appendChild(h1);
       }, 500);
@@ -142,8 +149,9 @@ const victoryCheck = (c) => {
         divArray.forEach((e) => e.classList.add("hide"));
       }, 500);
       setTimeout(() => {
+        controls.classList.add("hide");
         const h1 = document.createElement("h1");
-        h1.innerText = "HAI VINTO";
+        h1.innerText = `HAI VINTO IN ${counterMoves} MOSSE E CON UN TEMPO DI `;
         h1.classList.add("victoryScreen");
         main.appendChild(h1);
       }, 500);
