@@ -120,22 +120,34 @@ section {
 }
 /* couple for the card */
 .blue {
-  background-color: blue;
+  background-image: url("./img/picachu.webp");
+  background-position: 48% 100%;
+  background-size: cover;
 }
 .red {
-  background-color: red;
+  background-image: url("./img/bulbasaur.png");
+  background-position: center;
+  background-size: cover;
 }
 .green {
-  background-color: green;
+  background-image: url("./img/squirtle.webp");
+  background-position: 45% 100%;
+  background-size: cover;
 }
 .orange {
-  background-color: orange;
+  background-image: url("./img/charmender.jpg");
+  background-position: 60% 100%;
+  background-size: cover;
 }
 .purple {
-  background-color: purple;
+  background-image: url("./img/giratina.png");
+  background-position: 30% 100%;
+  background-size: cover;
 }
 .pink {
-  background-color: pink;
+  background-image: url("./img/zekrom.png");
+  background-position: 50% 100%;
+  background-size: cover;
 }
 .redCard {
   background-image: url("./img/back pattern porpora.avif");
