@@ -1,3 +1,4 @@
+body = document.getElementsByTagName("body")[0];
 const main = document.getElementsByTagName("MAIN")[0];
 const menu = document.getElementById("mainMenu");
 const numCards = document.getElementById("numCards");
@@ -50,11 +51,10 @@ const createCards = (n, c) => {
     divArray.push(div);
     div.addEventListener("click", (e) => {
       e.target.classList.toggle("flipped");
-      const test = setInterval(() => {
+      setTimeout(() => {
         console.log(e.target);
         if (c === "red") div.classList.remove("redCard");
         else div.classList.remove("blueCard");
-        clearInterval(test);
       }, 200);
       e.target.classList.add("eventNone");
       cardsPicked.push(e.target);
@@ -108,6 +108,7 @@ colorCards.addEventListener("click", (e) => {
 });
 
 startBtn.addEventListener("click", () => {
+  body.classList.add("bodyBcgInGame");
   const numberSelected = [];
   numCardsSelection.forEach((e) => {
     if (e.classList.contains("borderSelected")) numberSelected.push(parseInt(e.innerText));
@@ -125,28 +126,26 @@ startBtn.addEventListener("click", () => {
 const victoryCheck = (c) => {
   if (c === "red") {
     if (divArray.every((e) => !e.classList.contains("redCard"))) {
-      const victoryTime = setInterval(() => {
+      setTimeout(() => {
         divArray.forEach((e) => e.classList.add("hide"));
-        clearInterval(victoryTime);
       }, 500);
-      const victoryTitle = setInterval(() => {
+      setTimeout(() => {
         const h1 = document.createElement("h1");
         h1.innerText = "HAI VINTO";
+        h1.classList.add("victoryScreen");
         main.appendChild(h1);
-        clearInterval(victoryTitle);
       }, 500);
     }
   } else {
     if (divArray.every((e) => !e.classList.contains("blueCard"))) {
-      const victoryTime = setInterval(() => {
+      setTimeout(() => {
         divArray.forEach((e) => e.classList.add("hide"));
-        clearInterval(victoryTime);
       }, 500);
-      const victoryTitle = setInterval(() => {
+      setTimeout(() => {
         const h1 = document.createElement("h1");
         h1.innerText = "HAI VINTO";
+        h1.classList.add("victoryScreen");
         main.appendChild(h1);
-        clearInterval(victoryTitle);
       }, 500);
     }
   }

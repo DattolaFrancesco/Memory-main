@@ -1,9 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap");
 body {
   margin: 0;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url("./img/bcg menu.webp");
+  font-family: "Cinzel", serif;
+  background-size: 100% 100%;
 }
 main {
   display: flex;
@@ -12,11 +16,12 @@ main {
   flex-wrap: wrap;
   height: 80%;
   width: 75%;
-  background-color: greenyellow;
+  background-color: transparent;
   perspective: 1000px;
 }
 .card24 {
-  border: 2px solid black;
+  border: 8px solid rgb(255, 255, 255);
+  border-right: 10px solid rgb(255, 255, 255);
   width: 10%;
   height: 30%;
   margin-left: 0.5%;
@@ -29,7 +34,9 @@ main {
   transform: rotateY(180deg);
 }
 .card50 {
-  width: 8.5%;
+  border: 4px solid rgb(255, 255, 255);
+  border-right: 5px solid rgb(255, 255, 255);
+  width: 8%;
   height: 18%;
   margin-left: 0.5%;
   margin-right: 0.5%;
@@ -38,46 +45,78 @@ main {
 }
 /* menu */
 #mainMenu {
-  background-color: aqua;
+  background-color: rgba(15, 92, 50, 0.6);
+  border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  width: 50%;
   height: 100%;
+  color: rgb(241, 190, 80);
 }
 #numCards {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 15%;
-  width: 40%;
+  width: 60%;
 }
 .number {
-  background-color: bisque;
+  background-color: rgba(68, 46, 6, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
   width: 15%;
-  border: 1px solid red;
+  border-radius: 10px;
   margin-inline: 5%;
   height: 60%;
+  transition: 0.5s ease;
+}
+.number:hover {
+  transform: scale(1.2);
 }
 #styleCards {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 15%;
-  width: 40%;
+  height: 13%;
+  width: 65%;
 }
 .style {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 15%;
-  border: 1px solid red;
+  border-radius: 10px;
   margin-inline: 5%;
   height: 100%;
+  transition: 0.5s ease;
+}
+.style:hover {
+  transform: scale(1.2);
+}
+section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#startBtn {
+  color: rgb(241, 190, 80);
+  background-color: rgba(68, 46, 6);
+  border: none;
+  margin-top: 10%;
+  padding-inline: 10%;
+  padding-block: 3%;
+  border-radius: 10px;
+  border: 2px solid rgb(241, 190, 80);
+  transition: 0.5s ease;
+  font-family: "Cinzel", serif;
+}
+#startBtn:hover {
+  background-color: rgb(43, 29, 3);
+  transform: scale(1.2);
 }
 /* couple for the card */
 .blue {
@@ -99,14 +138,15 @@ main {
   background-color: pink;
 }
 .redCard {
-  background-image: url("./img/retro carta rossa.webp");
-  background-size: 140% 120%;
-  background-position: center;
+  background-image: url("./img/back pattern porpora.avif");
+  background-size: cover;
 }
 .blueCard {
-  background-image: url("./img/retro carta blu.webp");
-  background-size: 120% 120%;
-  background-position: center;
+  background-image: url("./img/back patter blue.jpg");
+  background-size: cover;
+}
+.bodyBcgInGame {
+  background-image: url("./img/bcg body.webp");
 }
 .hide {
   display: none;
@@ -118,8 +158,12 @@ main {
   transform: scale(1.1);
 }
 .borderSelected {
-  border: 3px solid violet;
+  border: 3px solid rgb(241, 190, 80);
 }
 .eventNone {
   pointer-events: none;
+}
+.victoryScreen {
+  color: rgb(241, 190, 80);
+  font-size: 300%;
 }
