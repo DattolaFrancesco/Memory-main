@@ -112,7 +112,7 @@ section {
   color: rgb(241, 190, 80);
   background-color: rgba(68, 46, 6);
   border: none;
-  margin-top: 10%;
+  margin-top: 3%;
   padding-inline: 10%;
   padding-block: 3%;
   border-radius: 10px;
@@ -184,5 +184,23 @@ section {
 .victoryScreen {
   color: rgb(241, 190, 80);
   font-size: 300%;
-  margin-top: 20%;
+  margin-top: 10%;
+}
+.scoreScreen {
+  color: rgb(241, 190, 80);
+  font-size: 150%;
+  margin-top: 2%;
+  display: block;
+}
+.ulBcg {
+  background-color: rgba(15, 92, 50, 0.6);
+  border-radius: 20px;
+  padding-right: 1.5%;
+  padding-block: 1.5%;
+}
+.divFinal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

@@ -13,6 +13,7 @@ const color = ["blue", "red", "orange", "green", "purple", "pink"];
 const colorArray = [];
 const cardsPicked = [];
 const divArray = [];
+const scores = JSON.parse(localStorage.getItem("score")) || [];
 let click = 0;
 let counterMoves = 0;
 
@@ -56,7 +57,6 @@ const createCards = (n, c) => {
     div.addEventListener("click", (e) => {
       e.target.classList.toggle("flipped");
       setTimeout(() => {
-        console.log(e.target);
         if (c === "red") div.classList.remove("redCard");
         else div.classList.remove("blueCard");
       }, 200);
@@ -148,9 +148,33 @@ const victoryCheck = (c) => {
           window.location.reload();
         });
         h1.innerText = `HAI VINTO IN ${counterMoves} MOSSE E CON UN TEMPO DI ${minutes}:${seconds}`;
+        const div = document.createElement("div");
+        div.classList.add("divFinal");
         h1.classList.add("victoryScreen");
-        main.appendChild(h1);
-        main.appendChild(btn);
+        main.appendChild(div);
+        div.appendChild(h1);
+
+        // data saver function and storage-------------------------------
+        scores.push({
+          moves: counterMoves,
+          time: `${minutes}:${seconds}`,
+          date: new Date().toLocaleString(),
+        });
+        localStorage.setItem("score", JSON.stringify(scores));
+        let finalscore = JSON.parse(localStorage.getItem("score"));
+        const ul = document.createElement("ul");
+        ul.classList.add("ulBcg");
+        for (let i = 0; i < finalscore.length; i++) {
+          let moves = finalscore[i].moves;
+          let time = finalscore[i].time;
+          let date = finalscore[i].date;
+          const li = document.createElement("li");
+          li.innerText = `${date} - punteggio di ${moves} in ${time}`;
+          li.classList.add("scoreScreen");
+          ul.appendChild(li);
+        }
+        div.appendChild(ul);
+        div.appendChild(btn);
       }, 500);
     }
   } else {
