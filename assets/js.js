@@ -7,6 +7,7 @@ const colorCardsSelection = document.querySelectorAll(".style");
 const numCardsSelection = document.querySelectorAll(".number");
 const startBtn = document.getElementById("startBtn");
 const controls = document.getElementById("controls");
+const time = document.getElementById("time");
 const moves = document.getElementById("moves");
 const color = ["blue", "red", "orange", "green", "purple", "pink"];
 const colorArray = [];
@@ -128,6 +129,7 @@ startBtn.addEventListener("click", () => {
   else colorOfCards = "blue";
   menu.style.display = "none";
   createCards(numberSelected[0], colorOfCards);
+  timer();
 });
 const victoryCheck = (c) => {
   if (c === "red") {
@@ -138,9 +140,17 @@ const victoryCheck = (c) => {
       setTimeout(() => {
         controls.classList.add("hide");
         const h1 = document.createElement("h1");
-        h1.innerText = `HAI VINTO IN ${counterMoves} MOSSE E CON UN TEMPO DI `;
+        const btn = document.createElement("button");
+        btn.innerText = "NUOVA PARTITA";
+        btn.classList.add("startbtn");
+        btn.classList.add("startbtn:hover");
+        btn.addEventListener("click", () => {
+          window.location.reload();
+        });
+        h1.innerText = `HAI VINTO IN ${counterMoves} MOSSE E CON UN TEMPO DI ${minutes}:${seconds}`;
         h1.classList.add("victoryScreen");
         main.appendChild(h1);
+        main.appendChild(btn);
       }, 500);
     }
   } else {
@@ -151,10 +161,28 @@ const victoryCheck = (c) => {
       setTimeout(() => {
         controls.classList.add("hide");
         const h1 = document.createElement("h1");
-        h1.innerText = `HAI VINTO IN ${counterMoves} MOSSE E CON UN TEMPO DI `;
+        h1.innerText = `HAI VINTO IN ${counterMoves} MOSSE E CON UN TEMPO DI ${minutes}:${seconds}`;
         h1.classList.add("victoryScreen");
         main.appendChild(h1);
       }, 500);
     }
   }
+};
+// timer function ---------------------------------------
+let seconds = 0;
+let minutes = 0;
+const timer = () => {
+  setInterval(() => {
+    if (seconds === 59) {
+      seconds = 0;
+      minutes++;
+    }
+    if (seconds < 9) {
+      seconds++;
+      time.innerText = ` ${minutes}:0${seconds}`;
+    } else {
+      seconds++;
+      time.innerText = ` ${minutes}:${seconds}`;
+    }
+  }, 1000);
 };

@@ -108,7 +108,7 @@ section {
   justify-content: center;
   align-items: center;
 }
-#startBtn {
+.startbtn {
   color: rgb(241, 190, 80);
   background-color: rgba(68, 46, 6);
   border: none;
@@ -120,7 +120,7 @@ section {
   transition: 0.5s ease;
   font-family: "Cinzel", serif;
 }
-#startBtn:hover {
+.startbtn:hover {
   background-color: rgb(43, 29, 3);
   transform: scale(1.2);
 }
