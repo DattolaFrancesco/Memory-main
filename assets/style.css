@@ -193,8 +193,6 @@ section {
   display: block;
 }
 .ulBcg {
-  background-color: rgba(15, 92, 50, 0.6);
-  border-radius: 20px;
   padding-right: 1.5%;
   padding-block: 1.5%;
 }
@@ -203,4 +201,8 @@ section {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: rgba(15, 92, 50, 0.6);
+  border-radius: 20px;
+
+  padding: 2%;
 }
