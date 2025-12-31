@@ -1,4 +1,5 @@
-body = document.getElementsByTagName("body")[0];
+// VARIABILI GENERALI
+const body = document.getElementsByTagName("body")[0];
 const main = document.getElementsByTagName("MAIN")[0];
 const menu = document.getElementById("mainMenu");
 const numCards = document.getElementById("numCards");
@@ -17,7 +18,7 @@ const scores = JSON.parse(localStorage.getItem("score")) || [];
 let click = 0;
 let counterMoves = 0;
 
-//------------------------------------------------------
+//---------------------------------- FUNZIONE PER PRENDERE DELLE FIGURE A CASO
 const shuffleColor = (n) => {
   let usedNumber = [];
   for (let i = 0; i < n; i++) {
@@ -29,7 +30,7 @@ const shuffleColor = (n) => {
   }
   return usedNumber;
 };
-//------------------------------------------------------
+//-----------------------------------METTERE LE FIGURE IN UN UNICO ARRAY
 const createColorArray = (n) => {
   if (n === 50) {
     for (let i = 0; i < 9; i++) {
@@ -41,7 +42,7 @@ const createColorArray = (n) => {
     }
   }
 };
-//------------------------------------------------------
+//-----------------------------------FUNZIONE PER CREARE LE CARTE CON LE FIGURE
 const createCards = (n, c) => {
   createColorArray(n);
   for (let i = 0; i < n; i++) {
@@ -69,7 +70,7 @@ const createCards = (n, c) => {
     });
   }
 };
-//------------------------------------------------------
+//---------------------------------FUNZIONE PER CONTROLLARE SE LE CARTE PRESE SONO UGUALI
 const check = (c) => {
   if (click === 2) {
     click = 0;
@@ -99,7 +100,7 @@ const check = (c) => {
     }
   }
 };
-//------------------------------------------------------
+//---------------------------------------LISTENER PER IL MAIN MENU
 numCards.addEventListener("click", (e) => {
   if (e.target.classList.contains("number")) {
     numCardsSelection.forEach((e) => e.classList.remove("borderSelected"));
@@ -131,6 +132,7 @@ startBtn.addEventListener("click", () => {
   createCards(numberSelected[0], colorOfCards);
   timer();
 });
+//---------------------------------- FUNZIONE PER IL CHECK DELLA VITTORIA
 const victoryCheck = (c) => {
   if (c === "red") {
     if (divArray.every((e) => !e.classList.contains("redCard"))) {
@@ -185,9 +187,41 @@ const victoryCheck = (c) => {
       setTimeout(() => {
         controls.classList.add("hide");
         const h1 = document.createElement("h1");
+        const btn = document.createElement("button");
+        btn.innerText = "NUOVA PARTITA";
+        btn.classList.add("startbtn");
+        btn.classList.add("startbtn:hover");
+        btn.addEventListener("click", () => {
+          window.location.reload();
+        });
         h1.innerText = `HAI VINTO IN ${counterMoves} MOSSE E CON UN TEMPO DI ${minutes}:${seconds}`;
+        const div = document.createElement("div");
+        div.classList.add("divFinal");
         h1.classList.add("victoryScreen");
-        main.appendChild(h1);
+        main.appendChild(div);
+        div.appendChild(h1);
+
+        // data saver function and storage-------------------------------
+        scores.push({
+          moves: counterMoves,
+          time: `${minutes}:${seconds}`,
+          date: new Date().toLocaleString(),
+        });
+        localStorage.setItem("score", JSON.stringify(scores));
+        let finalscore = JSON.parse(localStorage.getItem("score"));
+        const ul = document.createElement("ul");
+        ul.classList.add("ulBcg");
+        for (let i = 0; i < finalscore.length; i++) {
+          let moves = finalscore[i].moves;
+          let time = finalscore[i].time;
+          let date = finalscore[i].date;
+          const li = document.createElement("li");
+          li.innerText = `${date} - punteggio di ${moves} in ${time}`;
+          li.classList.add("scoreScreen");
+          ul.appendChild(li);
+        }
+        div.appendChild(ul);
+        div.appendChild(btn);
       }, 500);
     }
   }
